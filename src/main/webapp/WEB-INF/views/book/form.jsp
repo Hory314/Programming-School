@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="./../template/header.jsp" />
+<jsp:include page="../template/header.jsp" />
 
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
@@ -27,4 +27,4 @@
         <input type="submit" value="save">
     </form>
 
-<jsp:include page="./../template/footer.jsp" />
+<jsp:include page="../template/footer.jsp" />

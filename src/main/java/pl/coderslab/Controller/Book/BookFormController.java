@@ -39,6 +39,7 @@ public class BookFormController extends HttpServlet
 
         AuthorDao authorDao = new AuthorDao();
         List<Author> authorList = authorDao.findAll();
+        request.setAttribute("page_title", "Dodaj książkę");
 
         request.setAttribute("authors", authorList);
 

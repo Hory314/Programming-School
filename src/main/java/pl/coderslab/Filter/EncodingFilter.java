@@ -16,7 +16,7 @@ public class EncodingFilter implements Filter
     {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-        System.out.println(LocalDateTime.now() + ": " + this.getClass().getName() + " executed.");
+        System.err.println(LocalDateTime.now() + ": " + this.getClass().getSimpleName() + " executed.");
 
         chain.doFilter(req, resp);
     }
