@@ -2,7 +2,7 @@ package pl.coderslab.Entity;
 
 public class UserGroup
 {
-    private Integer id;
+    private Integer id; // default null
     private String name;
 
     public UserGroup()
@@ -11,15 +11,15 @@ public class UserGroup
 
     public UserGroup(String name)
     {
-        this.name = name;
+        setName(name);
     }
 
-    public int getId()
+    public Integer getId()
     {
         return id;
     }
 
-    public void setId(int id)
+    public void setId(Integer id)
     {
         this.id = id;
     }
@@ -37,6 +37,9 @@ public class UserGroup
     @Override
     public String toString()
     {
-        return "UserGroup{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "UserGroup{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

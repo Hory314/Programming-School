@@ -4,7 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class User
 {
-    private Integer id; // default 0
+    private Integer id; // default null
     private String username;
     private String email;
     private String password;
@@ -22,17 +22,12 @@ public class User
         setUserGroup(userGroup);
     }
 
-    private static String hashPassword(String password)
-    {
-        return BCrypt.hashpw(password, BCrypt.gensalt()); // ma zwracac zahashowane haslo
-    }
-
-    public int getId()
+    public Integer getId()
     {
         return id;
     }
 
-    public void setId(int id)
+    public void setId(Integer id)
     {
         this.id = id;
     }
@@ -57,9 +52,14 @@ public class User
         this.email = email;
     }
 
+    private static String hashPassword(String password)
+    {
+        return BCrypt.hashpw(password, BCrypt.gensalt()); // ma zwracac zahashowane haslo
+    }
+
     public String getPassword()
     {
-        return password; // pobiera oczywiscie zahashowane bo takie bedzie trzymane tylko w obiekcie
+        return password;
     }
 
     public void setHashedPassword(String password)
@@ -67,10 +67,11 @@ public class User
         this.password = hashPassword(password); // ustawiaj zahashowane
     }
 
-//    public void setPasswordNoHashing(String password)
-//    {
-//        this.password = password;
-//    }
+    /* for dao only */
+    public void setPasswordNoHashing(String password)
+    {
+        this.password = password; // ustawiaj bez hashowania (dla selecta z bazy)
+    }
 
     public UserGroup getUserGroup()
     {

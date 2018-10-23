@@ -39,6 +39,15 @@ public class DBService
 
     }
 
+    /**
+     * For MySQL SELECT
+     *
+     * @param database database name
+     * @param query    MySQL SELECT query (with zero or more ?)
+     * @param params   list of parameters (?) in right order (as String)
+     * @return List of Maps. Each list element is a row from database as Map. Map contains pairs column_name -> value (String, String)
+     * @throws SQLException
+     */
     // each selected row in a list as map
     public static List<Map<String, String>> executeSelectQuery(String database, String query, List<String> params) throws SQLException
     {
@@ -96,6 +105,15 @@ public class DBService
         return dbResult;
     }
 
+    /**
+     * For MySQL INSERT
+     *
+     * @param database database name
+     * @param query    MySQL INSERT query (with zero or more ?)
+     * @param params   list of parameters (?) in right order (as String)
+     * @return ID of new created row in DB. If insertion fail returns <code>null</code>.
+     * @throws SQLException
+     */
     public static Integer executeInsert(String database, String query, List<String> params) throws SQLException
     {
         Integer newId = null;
@@ -139,6 +157,14 @@ public class DBService
         return newId;
     }
 
+    /**
+     * For MySQL UPDATE and DELETE
+     *
+     * @param database database name
+     * @param query    MySQL UPDATE or DELETE query (with zero or more ?)
+     * @param params   list of parameters (?) in right order (as String)
+     * @throws SQLException
+     */
     public static void executeQuery(String database, String query, List<String> params) throws SQLException
     {
         try (Connection con = connect(database))
@@ -161,5 +187,4 @@ public class DBService
             throw e;
         }
     }
-
 }
