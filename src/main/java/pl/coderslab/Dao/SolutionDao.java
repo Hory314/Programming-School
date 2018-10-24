@@ -18,8 +18,18 @@ public class SolutionDao
 
     public List<Solution> findAll()
     {
+        return findAll(-1);
+    }
 
-        String query = "Select * from " + tableName;
+    public List<Solution> findAll(int limit)
+    {
+        String addLimitInQuery = "";
+        if (limit > -1)
+        {
+            addLimitInQuery = " LIMIT " + limit;
+        }
+        String query = "SELECT * FROM " + tableName + " ORDER BY `created` DESC" + addLimitInQuery;
+        System.out.println(query); // test
         try
         {
             List<Map<String, String>> result = DBService.executeSelectQuery(dbName, query, null);

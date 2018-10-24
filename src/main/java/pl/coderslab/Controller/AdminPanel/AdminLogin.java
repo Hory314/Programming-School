@@ -1,11 +1,13 @@
 package pl.coderslab.Controller.AdminPanel;
 
+import pl.coderslab.Service.ServletService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(name = "AdminLogin", urlPatterns = {"/adminpanel", "/adminpanel/"})
+@WebServlet(name = "AdminLogin", urlPatterns = {"/adminpanel", "/adminpanel/", "/adminpanel/login", "/adminpanel/login/"})
 public class AdminLogin extends HttpServlet
 {
     private final String adminName = "admin";
@@ -41,15 +43,25 @@ public class AdminLogin extends HttpServlet
                  * nawet jak admin porusza się po stronie)
                  */
                 System.out.println("nie jest null - dluga sesja");
+
+                Cookie oldSessionCookie = ServletService.getCookie(request, "session_id");
+                if (oldSessionCookie != null)
+                {
+                    oldSessionCookie.setMaxAge(0);
+                    response.addCookie(oldSessionCookie);
+                }
+
                 int sessMaxAge = 60 * 60 * 24 * 3; // 3 dni
-                Cookie JSESSIONIDcookie = new Cookie("JSESSIONID", newSession.getId()); // sam se stworze ciastko dla sesji...
+                Cookie JSESSIONIDcookie = new Cookie("session_id", newSession.getId()); // sam se stworze ciastko dla sesji...
                 JSESSIONIDcookie.setMaxAge(sessMaxAge); // bo chce ustawic max age
+                //JSESSIONIDcookie.setPath("/adminpanel");//narazie sie w to nie bawie
                 response.addCookie(JSESSIONIDcookie);
 
                 newSession.setMaxInactiveInterval(sessMaxAge);
             }
 
-            response.sendRedirect("/adminpanel/manage/groups"); // logowanie ok, wiec przekierowujemy na cos
+            // response.sendRedirect("/adminpanel/manage/groups"); // logowanie ok, wiec przekierowujemy na cos
+            response.sendRedirect(response.encodeRedirectURL("/adminpanel/manage/groups")); // logowanie ok, wiec przekierowujemy na cos
         }
         else
         {
@@ -75,11 +87,12 @@ public class AdminLogin extends HttpServlet
                 if (sessionAdminName.equals(this.adminName) && sessionAdminPass.equals(this.adminPass)) // i sie zgadza...
                 { // jak hasla sa w sesji
                     System.err.println("OK zapraszamy");
-                    response.sendRedirect("/adminpanel/manage/groups"); // to user zalogowany juz - przekieruj
+                    response.sendRedirect(response.encodeRedirectURL("/adminpanel/manage/groups")); // to user zalogowany juz - przekieruj
                     return; // return zeby sie forward() nie wykonal bo bedzie error
                 }
             }
         } // musze tak zrobic, bo filter nie obejmuje tego servletu (wykluczylem go)
+
         request.setAttribute("page_title", "Logowanie admina");
         getServletContext().getRequestDispatcher("/WEB-INF/views/adminpanel/login.jsp").forward(request, response);
     }

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="doc_header.jsp"/>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -56,7 +56,7 @@
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/adminpanel/loguot" data-toggle="modal" data-target="#logoutModal">Wyloguj się</a>
+                <a class="dropdown-item" href="<c:url value="/adminpanel/logout" />" data-toggle="modal" data-target="#logoutModal">Wyloguj się</a>
             </div>
         </li>
     </ul>

@@ -77,8 +77,16 @@ public class UserDao
         user.setEmail(row.get("email"));
         user.setPasswordNoHashing(row.get("password")); // nie hashujemy bo haslo jest juz pobrane z bazy czyli juz zahashowane
 
-        UserGroupDao userGroupDao = new UserGroupDao();
-        UserGroup userGroup = userGroupDao.getById(Integer.parseInt(row.get("user_group_id")));
+        UserGroup userGroup;
+        try
+        {
+            UserGroupDao userGroupDao = new UserGroupDao();
+            userGroup = userGroupDao.getById(Integer.parseInt(row.get("user_group_id")));
+        }
+        catch (NumberFormatException e)
+        {
+            userGroup = null;
+        }
         user.setUserGroup(userGroup);
 
         return user;

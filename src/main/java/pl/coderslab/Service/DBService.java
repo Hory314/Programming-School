@@ -11,9 +11,15 @@ public class DBService
 
     public static Connection connect(String database) throws SQLException
     {
+        /**
+         Loading class `com.mysql.jdbc.Driver'. This is deprecated.
+         The new driver class is `com.mysql.cj.jdbc.Driver'.
+         The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+         */
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (Exception e)
         {
@@ -22,7 +28,8 @@ public class DBService
 
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/" + database + "?useUnicode=yes&characterEncoding=UTF-8" +
-                        "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                        "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" +
+                        "&useSSL=false",
                 "root",
                 "coderslab");
     }
