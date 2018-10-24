@@ -2,10 +2,7 @@ package pl.coderslab.Controller.AdminPanel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "AdminLogin", urlPatterns = {"/adminpanel", "/adminpanel/"})
@@ -31,23 +28,32 @@ public class AdminLogin extends HttpServlet
             HttpSession newSession = request.getSession(true); // true - stworz jak nie ma (a nie ma)
             newSession.setAttribute("admin_name", this.adminName);
             newSession.setAttribute("admin_pass", this.adminPass);
-            if(request.getParameter("remember") == null)
+            if (request.getParameter("remember") == null)
             {
                 System.out.println("jest null - krotka sesja");
                 newSession.setMaxInactiveInterval(5); // 5 sekund do testow
+                //ustawiam tylko czas "nieaktywnosci" sesji - ciasteczko zyje do zamkniecia przegladarki czyli sesja tez
             }
             else
             {
+                /* można wychodzic z przglądarki i sesja bedzie zapamietana, ale bez względu na wszystko
+                 * raz na 3 dni trzeba sie logować (bo po 3 dniach ciasteczko idzie papa (+sesja) i nie odświeżam go
+                 * nawet jak admin porusza się po stronie)
+                 */
                 System.out.println("nie jest null - dluga sesja");
-                newSession.setMaxInactiveInterval(60 * 60 * 24 * 7); // 1 tydzień
-            }
+                int sessMaxAge = 60 * 60 * 24 * 3; // 3 dni
+                Cookie JSESSIONIDcookie = new Cookie("JSESSIONID", newSession.getId()); // sam se stworze ciastko dla sesji...
+                JSESSIONIDcookie.setMaxAge(sessMaxAge); // bo chce ustawic max age
+                response.addCookie(JSESSIONIDcookie);
 
+                newSession.setMaxInactiveInterval(sessMaxAge);
+            }
 
             response.sendRedirect("/adminpanel/manage/groups"); // logowanie ok, wiec przekierowujemy na cos
         }
         else
         {
-            request.setAttribute("bad_pass","<p style='color: red;'>Zły login/hasło</p>"); // mozna potem zmienic na template
+            request.setAttribute("login_info", "<p style='color: red;'>Zły login/hasło.</p>"); // mozna potem zmienic na template
 
             doGet(request, response); // jak haslo sie nie zgadza to wyswietl logowanie
         }
@@ -56,7 +62,8 @@ public class AdminLogin extends HttpServlet
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // mozna zrobic ze jesli ma sesje ok to przekieruje gdzies indziej
+        String loginInfo = (String) request.getAttribute("login_info");
+        System.out.println("loginInfo: " + loginInfo + ".");
         HttpSession session = request.getSession(false); // false - nie twórz nowej jak nie istniteje sesja (zwroci null jak nie instnieje)
 
         if (session != null) // jak niepusta sesja...

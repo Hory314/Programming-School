@@ -10,10 +10,10 @@
 <!-- Page Content -->
 <h1>Zaloguj się jako administrator</h1>
 <hr>
-<!--<p>This is a great starting point for new custom pages.</p>-->${bad_pass}
+<!--<p>This is a great starting point for new custom pages.</p>-->${login_info}
 
 
-<form method="post">
+<form action="/adminpanel" method="post">
     <p><input type="text" name="login" placeholder="Login"/></p>
     <p><input type="password" name="password" placeholder="Hasło"/></p>
     <p><label><input type="checkbox" name="remember" checked> Zapamiętaj mnie</label></p>
