@@ -31,7 +31,17 @@ public class AdminLogin extends HttpServlet
             HttpSession newSession = request.getSession(true); // true - stworz jak nie ma (a nie ma)
             newSession.setAttribute("admin_name", this.adminName);
             newSession.setAttribute("admin_pass", this.adminPass);
-            newSession.setMaxInactiveInterval(5); // 5 sekund do testow
+            if(request.getParameter("remember") == null)
+            {
+                System.out.println("jest null - krotka sesja");
+                newSession.setMaxInactiveInterval(5); // 5 sekund do testow
+            }
+            else
+            {
+                System.out.println("nie jest null - dluga sesja");
+                newSession.setMaxInactiveInterval(60 * 60 * 24 * 7); // 1 tydzień
+            }
+
 
             response.sendRedirect("/adminpanel/manage/groups"); // logowanie ok, wiec przekierowujemy na cos
         }

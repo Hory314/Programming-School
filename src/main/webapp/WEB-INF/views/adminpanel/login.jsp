@@ -16,6 +16,7 @@
 <form method="post">
     <p><input type="text" name="login" placeholder="Login"/></p>
     <p><input type="password" name="password" placeholder="Hasło"/></p>
+    <p><label><input type="checkbox" name="remember" checked> Zapamiętaj mnie</label></p>
     <p><input type="submit" value="Zaloguj"></p>
 </form>
 
