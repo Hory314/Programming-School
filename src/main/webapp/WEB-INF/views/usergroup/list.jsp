@@ -1,3 +1,6 @@
+<%@ page import="pl.coderslab.Entity.User" %>
+<%@ page import="pl.coderslab.Entity.UserGroup" %>
+<%@ page import="pl.coderslab.Dao.UserGroupDao" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="./../template/header.jsp"/>
@@ -29,8 +32,16 @@
                 <tbody>
                 <c:forEach items="${userGroups}" var="userGroup">
                     <tr>
-                        <td>${userGroup.name}</td>
-                        <td>0<!-- todo --></td>
+                        <td>
+                            <a href="<c:url value="/group/${userGroup.name}?id=${userGroup.id}" />">${userGroup.name}</a>
+                        </td>
+                        <c:set var="group" value="${userGroup}" scope="request"/>
+                        <%
+                            UserGroup userGroup = (UserGroup) request.getAttribute("group");
+                            UserGroupDao ugDao = new UserGroupDao();
+                            int members = ugDao.getMembersCount(userGroup);
+                        %>
+                        <td><%=members%></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -41,20 +52,3 @@
     </div>
 </div>
 <jsp:include page="./../template/footer.jsp"/>
-
-<%--
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="../template/header.jsp"/>
-<!-- Breadcrumbs-->
-<ol class="breadcrumb">
-    <li class="breadcrumb-item active">Rozwiązania zadań</li>
-</ol>
-
-<!-- Page Content -->
-<h1>Rozwiązania zadań</h1>
-<hr>
-<!--<p>This is a great starting point for new custom pages.</p>-->${login_info}
-
-
-<jsp:include page="../template/footer.jsp"/>--%>

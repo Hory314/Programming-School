@@ -14,9 +14,26 @@ public class UserGroupDao
     private String dbName = "programming_school";
     private String tableName = "user_group";
 
+    public Integer getMembersCount(UserGroup userGroup)
+    {
+        String query = "SELECT COUNT(*) AS `members_count` FROM `users` WHERE `user_group_id` = ? GROUP BY `user_group_id`";
+
+        List<String> params = new ArrayList<>();
+        params.add(userGroup.getId().toString());
+        try
+        {
+            return Integer.parseInt(DBService.executeSelectQuery(dbName, query, params).get(0).get("members_count"));
+
+        }
+        catch (SQLException e)
+        {
+            return 0;
+        }
+    }
+
     public List<UserGroup> findAll()
     {
-        String query = "Select * from " + tableName;
+        String query = "SELECT * FROM " + tableName + " ORDER BY `id` DESC";
         try
         {
             List<Map<String, String>> result = DBService.executeSelectQuery(dbName, query, null);

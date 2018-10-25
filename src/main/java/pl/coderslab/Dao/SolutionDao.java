@@ -16,11 +16,6 @@ public class SolutionDao
     private String dbName = "programming_school";
     private String tableName = "solution";
 
-    public List<Solution> findAllByUser(Integer userId)
-    {
-        return null;
-    }
-
     public List<Solution> findAll()
     {
         return findAll(null, null, null);

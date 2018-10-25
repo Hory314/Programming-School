@@ -31,21 +31,8 @@
 <!--<p>This is a great starting point for new custom pages.</p>-->
 <p><strong>Treść zadania:</strong></p>
 <p>${exercise.description}</p>
-
-<%
-}
-else
-{
-%>
-<!-- Page Content -->
-<h1>${exercise_name}</h1> <%-- jesli exercise jest null (do $username przypisalismy wczesniej wartosc) --%>
 <hr>
-
-<%
-    }
-%>
 <%-- teraz tabelka --%>
-<hr>
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
@@ -99,6 +86,19 @@ else
         </div>
     </div>
 </div>
+<%
+}
+else
+{
+%>
+<!-- Page Content -->
+<h1>${exercise_name}</h1> <%-- jesli exercise jest null (do $username przypisalismy wczesniej wartosc) --%>
+<hr>
+
+<%
+    }
+%>
+
 
 
 <jsp:include page="../template/footer.jsp"/>

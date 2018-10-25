@@ -17,8 +17,24 @@ public class UserDao
 
     public List<User> findAll()
     {
+        return findAll(null, null);
+    }
 
-        String query = "SELECT * FROM " + tableName + " ORDER BY `user_group_id` DESC";
+    public List<User> findAll(Integer limit, Integer userGroupId)
+    {
+        String addLimitInQuery = "";
+        if (limit != null && limit > -1)
+        {
+            addLimitInQuery = " LIMIT " + limit;
+        }
+
+        String addWhereInQuery = "";
+        if (userGroupId != null && userGroupId > 0)
+        {
+            addWhereInQuery = " WHERE `user_group_id` = " + userGroupId;
+        }
+
+        String query = "SELECT * FROM " + tableName + addWhereInQuery + " ORDER BY `username` ASC" + addLimitInQuery;
         try
         {
             List<Map<String, String>> result = DBService.executeSelectQuery(dbName, query, null);

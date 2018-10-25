@@ -107,8 +107,20 @@
                     <tr>
                         <td>${solution.created}</td>
                         <td>${solution.updated}</td>
-                        <td>${solution.description}</td>
-                        <td><a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}" />">${solution.exercise.title}</a></td>
+                        <c:set var="shortDesc" value="${solution.description}" scope="request"/>
+                        <%
+                            String str = (String) request.getAttribute("shortDesc");
+                            if (str.length() > 256)
+                            {
+                                str = str.substring(0, 255); // 256 pierwszych znaków
+                            }
+                            request.setAttribute("shortDesc", str);
+                        %>
+                        <td>${shortDesc}... <a style="float: right;" href="/solution?id=${solution.id}">przejdź do
+                            rozwiązania »</a></td>
+                        <td>
+                            <a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}" />">${solution.exercise.title}</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
