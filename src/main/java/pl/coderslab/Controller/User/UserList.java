@@ -7,17 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "UserLogin", value = {"/login", "/login/"})
-public class UserLogin extends HttpServlet
+@WebServlet(name = "UserList", urlPatterns = {"/user/list", "/user/list/"})
+public class UserList extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        //todo logowanie userow jeszce nie dziala
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        request.setAttribute("page_title", "Logowanie");
-        getServletContext().getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
+        response.getWriter().append("lista userow...");
     }
 }

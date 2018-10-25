@@ -15,8 +15,10 @@
 <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "order": [] // sortuje domyslnie tabelke w takiej kolejnosci w jakiej otrzymalo dane (z zapytania)
+        });
     });
 </script>
 

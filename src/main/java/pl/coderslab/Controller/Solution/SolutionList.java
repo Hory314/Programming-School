@@ -29,7 +29,7 @@ public class SolutionList extends HttpServlet
         try
         {
             int intLimit = Integer.parseInt(limit);
-            solutions = solutionDao.findAll(intLimit);
+            solutions = solutionDao.findAll(intLimit, null, null);
         }
         catch (NumberFormatException | NullPointerException e)
         {

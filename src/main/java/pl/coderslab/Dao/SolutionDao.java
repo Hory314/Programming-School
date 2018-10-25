@@ -16,19 +16,36 @@ public class SolutionDao
     private String dbName = "programming_school";
     private String tableName = "solution";
 
-    public List<Solution> findAll()
+    public List<Solution> findAllByUser(Integer userId)
     {
-        return findAll(-1);
+        return null;
     }
 
-    public List<Solution> findAll(int limit)
+    public List<Solution> findAll()
+    {
+        return findAll(null, null, null);
+    }
+
+    public List<Solution> findAll(Integer limit, Integer exerciseId, Integer userId)
     {
         String addLimitInQuery = "";
-        if (limit > -1)
+        if (limit != null && limit > -1)
         {
             addLimitInQuery = " LIMIT " + limit;
         }
-        String query = "SELECT * FROM " + tableName + " ORDER BY `created` DESC" + addLimitInQuery;
+
+        String addWhereInQuery = "";
+        if (userId != null && userId > 0)
+        {
+            addWhereInQuery = " WHERE `users_id` = " + userId;
+        }
+
+        if (exerciseId != null && exerciseId > 0)
+        {
+            addWhereInQuery = " WHERE `exercise_id` = " + exerciseId;
+        }
+
+        String query = "SELECT * FROM " + tableName + addWhereInQuery + " ORDER BY `created` DESC" + addLimitInQuery;
         System.out.println(query); // test
         try
         {

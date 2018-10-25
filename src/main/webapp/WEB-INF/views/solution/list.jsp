@@ -37,7 +37,7 @@
                         <td>${solution.updated}</td>
                         <td>${solution.description}</td>
                         <td>${solution.exercise.title}</td>
-                        <td>${solution.user.username}</td>
+                        <td><a href="<c:url value="/user/${solution.user.username}?id=${solution.user.id}&limit=3" />">${solution.user.username}</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
