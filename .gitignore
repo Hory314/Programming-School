@@ -3,6 +3,6 @@
 /target
 
 #ignored for now
-src/main/webapp/css/
-src/main/webapp/js/
-src/main/webapp/vendor/
+#src/main/webapp/css/
+#src/main/webapp/js/
+#src/main/webapp/vendor/
