@@ -57,27 +57,29 @@
     </tr>
 </table>
 <hr>
-<%
-    String limit = request.getParameter("limit");
-    try
-    {
-        int intLimit = Integer.parseInt(limit);
-%>
-<p>Ostatnie <%=intLimit%> rozwiązania użytkownika (<a href="<c:url value="?id=${user.id}" />">Pokaż wszystkie</a>)</p>
-<%
-}
-catch (NumberFormatException e)
-{
-%>
-<p>Wszystkie rozwiązania użytkownika</p>
-<%
-    }
-%>
+
 
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        Rozwiązania
+
+        <%
+            String limit = request.getParameter("limit");
+            try
+            {
+                int intLimit = Integer.parseInt(limit);
+        %>
+        Ostatnie <%=intLimit%> rozwiązania użytkownika (<a href="<c:url value="?id=${user.id}" />">Pokaż wszystkie</a>)
+        <%
+        }
+        catch (NumberFormatException e)
+        {
+        %>
+        Wszystkie rozwiązania użytkownika
+        <%
+            }
+        %>
+
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -106,7 +108,7 @@ catch (NumberFormatException e)
                         <td>${solution.created}</td>
                         <td>${solution.updated}</td>
                         <td>${solution.description}</td>
-                        <td>${solution.exercise.title}</td>
+                        <td><a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}" />">${solution.exercise.title}</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

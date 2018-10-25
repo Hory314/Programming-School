@@ -40,7 +40,7 @@ public class UserDetails extends HttpServlet
 
         try
         {
-            int intId = Integer.parseInt(id);
+            Integer intId = Integer.parseInt(id);
             UserDao userDao = new UserDao();
             SolutionDao solutionDao = new SolutionDao();
 

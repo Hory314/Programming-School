@@ -18,7 +18,7 @@ public class UserDao
     public List<User> findAll()
     {
 
-        String query = "Select * from " + tableName;
+        String query = "SELECT * FROM " + tableName + " ORDER BY `user_group_id` DESC";
         try
         {
             List<Map<String, String>> result = DBService.executeSelectQuery(dbName, query, null);

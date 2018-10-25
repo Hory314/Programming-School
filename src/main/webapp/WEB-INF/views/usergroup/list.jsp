@@ -1,45 +1,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="./../template/header.jsp" />
+<jsp:include page="./../template/header.jsp"/>
 <ol class="breadcrumb">
-    <li class="breadcrumb-item active">Rozwiązania</li>
+    <li class="breadcrumb-item active">Lista grup</li>
 </ol>
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        Rozwiązania
+        Lista grup
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th>Utworzono</th>
-                    <th>Zaktualizowano</th>
-                    <th>Rozwiązanie</th>
-                    <th>Zadanie</th>
-                    <th>Dodał</th>
+                    <th>Nazwa</th>
+                    <th>Liczba członków</th>
                 </tr>
                 </thead>
 
                 <tfoot>
                 <tr>
-                    <th>Utworzono</th>
-                    <th>Zaktualizowano</th>
-                    <th>Rozwiązanie</th>
-                    <th>Zadanie</th>
-                    <th>Dodał</th>
+                    <th>Nazwa</th>
+                    <th>Liczba członków</th>
                 </tr>
                 </tfoot>
 
                 <tbody>
-                <c:forEach items="${solutions}" var="solution">
+                <c:forEach items="${userGroups}" var="userGroup">
                     <tr>
-                        <td>${solution.created}</td>
-                        <td>${solution.updated}</td>
-                        <td>${solution.description}</td>
-                        <td><a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}" />">${solution.exercise.title}</a></td>
-                        <td><a href="<c:url value="/user/${solution.user.username}?id=${solution.user.id}&limit=3" />">${solution.user.username}</a></td>
+                        <td>${userGroup.name}</td>
+                        <td>0<!-- todo --></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -49,7 +40,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="./../template/footer.jsp" />
+<jsp:include page="./../template/footer.jsp"/>
 
 <%--
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

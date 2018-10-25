@@ -1,13 +1,22 @@
-@javax.servlet.annotation.WebServlet(name = "ExerciseList")
-public class ExerciseList extends javax.servlet.http.HttpServlet
+package pl.coderslab.Controller.Exercise;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(name = "ExerciseList", urlPatterns = {"/exercises", "/exercises/", "/exercise/list", "/exercise/list/"})
+public class ExerciseList extends HttpServlet
 {
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, java.io.IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 
     }
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, java.io.IOException
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
+        response.getWriter().append("lista zadan"); // todo lista zadań
     }
 }
