@@ -60,6 +60,8 @@ public class UserLogin extends HttpServlet
                 response.addCookie(sessionCookie);
 
                 newSession.setMaxInactiveInterval(sessMaxAge);
+
+                newSession.setAttribute("remember", "true"); // do wykorzystania w filtrze odswiezania sesji
             }
             response.sendRedirect(response.encodeRedirectURL("/solutions")); // logowanie ok, wiec przekierowujemy na cos
         }

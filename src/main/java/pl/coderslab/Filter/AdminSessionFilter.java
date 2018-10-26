@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-@WebFilter(filterName = "AdminLoginFilter", urlPatterns = {"/adminpanel/*"}, initParams = {
+@WebFilter(filterName = "AdminSessionFilter", urlPatterns = {"/adminpanel/*"}, initParams = {
         @WebInitParam(name = "avoid-urls", value = "/adminpanel,/adminpanel/") // na tych adresach nie chce sprawdzac logowania, bo mi sie zapetli redirect!
 })
-public class AdminLoginFilter implements Filter
+public class AdminSessionFilter implements Filter
 {
     private ArrayList<String> urlList;
     private final String adminName = "admin";

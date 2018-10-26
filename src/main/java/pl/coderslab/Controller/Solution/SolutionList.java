@@ -34,6 +34,7 @@ public class SolutionList extends HttpServlet
         catch (NumberFormatException | NullPointerException e)
         {
             solutions = solutionDao.findAll();
+            // response.sendRedirect("https://stackoverflow.com/search?q=[java] " + e.getMessage());
         }
 
         request.setAttribute("solutions", solutions);

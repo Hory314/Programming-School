@@ -54,7 +54,7 @@ public class AdminLogin extends HttpServlet
                 int sessMaxAge = 60 * 60 * 24 * 3; // 3 dni
                 Cookie sessionCookie = new Cookie("session_id", newSession.getId()); // sam se stworze ciastko dla sesji...
                 sessionCookie.setMaxAge(sessMaxAge); // bo chce ustawic max age
-                //sessionCookie.setPath("/adminpanel");//narazie sie w to nie bawie
+                //sessionCookie.setPath("/adminpanel");//narazie sie w to nie bawie // todo chyba trzeba bedzie odkomentować sadzac po tym co sie dzialo w filtrze odswiezania
                 response.addCookie(sessionCookie);
 
                 newSession.setMaxInactiveInterval(sessMaxAge);
