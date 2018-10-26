@@ -2,7 +2,6 @@ package pl.coderslab.Dao;
 
 
 import pl.coderslab.Entity.Author;
-import pl.coderslab.Entity.Book;
 import pl.coderslab.Service.DBService;
 
 import java.sql.SQLException;
@@ -71,7 +70,7 @@ public class AuthorDao {
         return null;
     }
 
-    //TODO :: refactor for author
+    // refactor for author
 
 //    public void save(Book book){
 //

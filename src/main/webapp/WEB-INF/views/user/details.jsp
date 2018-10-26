@@ -53,7 +53,9 @@
     </tr>
     <tr>
         <td><b>Grupa:</b></td>
-        <td>${user.userGroup.name}</td>
+        <td>
+            <a href="<c:url value="/group/${user.userGroup.name}?id=${user.userGroup.id}"/>">${user.userGroup.name}</a>
+        </td>
     </tr>
 </table>
 <hr>

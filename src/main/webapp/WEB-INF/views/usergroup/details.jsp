@@ -21,7 +21,7 @@
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="<c:url value="/group/list" />">Grupy</a>
+        <a href="<c:url value="/group/list" />">Lista grup</a>
     </li>
     <li class="breadcrumb-item active">${group_name}</li>
 </ol>

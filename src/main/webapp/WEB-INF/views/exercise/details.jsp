@@ -1,9 +1,12 @@
-<%@ page import="pl.coderslab.Entity.User" %>
 <%@ page import="pl.coderslab.Entity.Exercise" %>
+<%@ page import="pl.coderslab.Entity.Solution" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     Exercise exercise = (Exercise) request.getAttribute("exercise");
+    List<Solution> solutionList = (List<Solution>) request.getAttribute("solutions");
     if (exercise != null)
     {
         request.setAttribute("page_title", "Zadanie \"" + exercise.getTitle() + "\"");
@@ -18,7 +21,10 @@
 <jsp:include page="../template/header.jsp"/>
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
-    <li class="breadcrumb-item active">${page_title}</li>
+    <li class="breadcrumb-item">
+        <a href="<c:url value="/exercises" />">Lista zadań</a>
+    </li>
+    <li class="breadcrumb-item active">${exercise_name}</li>
 </ol>
 
 <%
@@ -33,6 +39,10 @@
 <p>${exercise.description}</p>
 <hr>
 <%-- teraz tabelka --%>
+<%
+    if (solutionList != null)
+    {
+%>
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
@@ -91,14 +101,22 @@
 else
 {
 %>
+<p>Nie ma rozwiązań do tego zadania.</p>
+<%
+    }
+%>
+<%
+}
+else
+{
+%>
 <!-- Page Content -->
-<h1>${exercise_name}</h1> <%-- jesli exercise jest null (do $username przypisalismy wczesniej wartosc) --%>
+<h1>${exercise_name}</h1>
 <hr>
 
 <%
     }
 %>
-
 
 
 <jsp:include page="../template/footer.jsp"/>

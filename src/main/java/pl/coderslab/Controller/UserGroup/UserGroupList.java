@@ -25,10 +25,6 @@ public class UserGroupList extends HttpServlet
         UserGroupDao userGroupDao = new UserGroupDao();
         List<UserGroup> userGroups = userGroupDao.findAll();
 
-        /*
-        // todo użyć potem
-        //select user_group_id,count(*) as members_count from users group by user_group_id
-         */
         List<Integer> membersCount = new ArrayList<>();
         for (UserGroup userGroup : userGroups)
         {
