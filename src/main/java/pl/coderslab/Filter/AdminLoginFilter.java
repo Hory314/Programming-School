@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -25,6 +26,7 @@ public class AdminLoginFilter implements Filter
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException
     {
+        System.err.println(LocalDateTime.now() + ": " + this.getClass().getSimpleName() + " executed.");
 
         HttpServletRequest request = (HttpServletRequest) req; // full request
         HttpServletResponse response = (HttpServletResponse) resp; // full response

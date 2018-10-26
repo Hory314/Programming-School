@@ -52,10 +52,10 @@ public class AdminLogin extends HttpServlet
                 }
 
                 int sessMaxAge = 60 * 60 * 24 * 3; // 3 dni
-                Cookie JSESSIONIDcookie = new Cookie("session_id", newSession.getId()); // sam se stworze ciastko dla sesji...
-                JSESSIONIDcookie.setMaxAge(sessMaxAge); // bo chce ustawic max age
-                //JSESSIONIDcookie.setPath("/adminpanel");//narazie sie w to nie bawie
-                response.addCookie(JSESSIONIDcookie);
+                Cookie sessionCookie = new Cookie("session_id", newSession.getId()); // sam se stworze ciastko dla sesji...
+                sessionCookie.setMaxAge(sessMaxAge); // bo chce ustawic max age
+                //sessionCookie.setPath("/adminpanel");//narazie sie w to nie bawie
+                response.addCookie(sessionCookie);
 
                 newSession.setMaxInactiveInterval(sessMaxAge);
             }

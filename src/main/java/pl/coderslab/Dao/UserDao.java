@@ -84,6 +84,32 @@ public class UserDao
         return null;
     }
 
+    public User getByEmail(String email)
+    {
+        String query = "SELECT * FROM " + tableName + " WHERE `email` = ?";
+        List<String> params = new ArrayList<>();
+        params.add(email);
+
+        try
+        {
+            List<Map<String, String>> result = DBService.executeSelectQuery(dbName, query, params);
+            if (result.size() > 0)
+            {
+                Map<String, String> resultUser = result.get(0);
+
+                User user = createUser(resultUser);
+
+                return user;
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     private User createUser(Map<String, String> row)
     {
         User user = new User();

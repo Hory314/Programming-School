@@ -57,6 +57,22 @@ public class User
         return BCrypt.hashpw(password, BCrypt.gensalt()); // ma zwracac zahashowane haslo
     }
 
+    /**
+     * run this method only on user with already set <u>plain</u> password and email
+     *
+     * @param u user with set <u>hashed</u> password and email
+     * @return <code>true</code> if passwords match, otherwise return <code>false</code>
+     */
+    // potem moze dodac rzucanie jakiegos wyjatku
+    public boolean checkPwAndEmail(User u)
+    {
+        if (u == null)
+        {
+            return false;
+        }
+        return (BCrypt.checkpw(this.getPassword(), u.getPassword()) && this.getEmail().equals(u.getEmail()));
+    }
+
     public String getPassword()
     {
         return password;
