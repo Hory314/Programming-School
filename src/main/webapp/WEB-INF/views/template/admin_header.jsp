@@ -56,7 +56,7 @@
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<c:url value="/logout" />" data-toggle="modal" data-target="#logoutModal">Wyloguj się</a>
+                <a class="dropdown-item" href="<c:url value="/adminpanel/logout" />" data-toggle="modal" data-target="#logoutModal">Wyloguj się</a>
             </div>
         </li>
     </ul>
@@ -65,7 +65,7 @@
 
 <div id="wrapper">
     <!-- Sidebar -->
-    <jsp:include page="nav.jsp" />
+    <jsp:include page="admin_nav.jsp" />
 
     <div id="content-wrapper">
 

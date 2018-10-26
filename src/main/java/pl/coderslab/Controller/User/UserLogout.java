@@ -1,4 +1,4 @@
-package pl.coderslab.Controller.AdminPanel;
+package pl.coderslab.Controller.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "AdminLogout", value = {"/adminpanel/logout/", "/adminpanel/logout"})
-public class AdminLogout extends HttpServlet
+/**
+ * Works also for Admin logout
+ */
+@WebServlet(name = "UserLogout", urlPatterns = {"/logout/", "/logout", "/adminpanel/logout", "/adminpanel/logout/"})
+public class UserLogout extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -27,10 +30,11 @@ public class AdminLogout extends HttpServlet
         request.setAttribute("login_info", "<p style='color: green;'>Zostałeś wylogowany.</p>"); // mozna potem zmienic na template
         System.out.println("Wylogowałem");
 
-        //response.setHeader("Refresh","3");
-        // uruchomi /adminpanel ale przekaze mu swoj request i response (bede mogl uzyc atrybutu login_info) ale adres sie nie zmieni
-        getServletContext().getRequestDispatcher("/adminpanel").forward(request, response);
-
-        //response.sendRedirect("/adminpanel"); // powyzsze nam zalatwia sprawe
+        String redirect = "/login";
+        if (request.getServletPath().startsWith("/adminpanel"))
+        {
+            redirect = "/adminpanel";
+        }
+        getServletContext().getRequestDispatcher(redirect).forward(request, response);
     }
 }

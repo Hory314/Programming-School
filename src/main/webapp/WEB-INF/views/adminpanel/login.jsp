@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="../template/header.jsp"/>
+<jsp:include page="../template/admin_header.jsp"/>
 
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
@@ -20,4 +20,4 @@
     <p><input type="submit" value="Zaloguj"></p>
 </form>
 
-<jsp:include page="../template/footer.jsp"/>
+<jsp:include page="../template/admin_footer.jsp"/>
