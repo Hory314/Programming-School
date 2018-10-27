@@ -17,6 +17,16 @@
 <script>
     $(document).ready(function () {
         $('#dataTable').DataTable({
+            "language": {
+                "infoEmpty": "Brak wyników",
+                "info": "Wyniki od _START_ do _END_ z _TOTAL_",
+                "lengthMenu": "Pokaż _MENU_ wyników",
+                "emptyTable": "Brak danych",
+                "paginate": {
+                    "previous": "Poprzednia strona",
+                    "next": "Następna strona",
+                },
+            },
             "order": [] // sortuje domyslnie tabelke w takiej kolejnosci w jakiej otrzymalo dane (z zapytania)
         });
     });

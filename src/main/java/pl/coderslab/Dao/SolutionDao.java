@@ -24,7 +24,7 @@ public class SolutionDao
     public List<Solution> findAll(Integer limit, Integer exerciseId, Integer userId)
     {
         String addLimitInQuery = "";
-        if (limit != null && limit > -1)
+        if (limit != null && limit > 0)
         {
             addLimitInQuery = " LIMIT " + limit;
         }

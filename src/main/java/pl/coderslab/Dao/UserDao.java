@@ -23,7 +23,7 @@ public class UserDao
     public List<User> findAll(Integer limit, Integer userGroupId)
     {
         String addLimitInQuery = "";
-        if (limit != null && limit > -1)
+        if (limit != null && limit > 0)
         {
             addLimitInQuery = " LIMIT " + limit;
         }

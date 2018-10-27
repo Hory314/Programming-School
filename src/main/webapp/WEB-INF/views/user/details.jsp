@@ -1,8 +1,11 @@
+<%@ page import="pl.coderslab.Entity.Solution" %>
 <%@ page import="pl.coderslab.Entity.User" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     User user = (User) request.getAttribute("user");
+    List<Solution> solutionList = (List<Solution>) request.getAttribute("solutions");
     if (user != null)
     {
         request.setAttribute("page_title", "Profil użytkownika " + user.getUsername());
@@ -60,7 +63,11 @@
 </table>
 <hr>
 
-
+<!-- tabelka -->
+<%
+    if (solutionList != null)
+    {
+%>
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
@@ -132,6 +139,15 @@
         </div>
     </div>
 </div>
+<%
+    }else
+    {
+%>
+<p>Brak dodanych rozwiązań.</p>
+<%
+    }
+%>
+<!-- koniec tabelki -->
 <%
 }
 else

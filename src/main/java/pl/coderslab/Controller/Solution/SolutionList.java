@@ -37,6 +37,7 @@ public class SolutionList extends HttpServlet
             // response.sendRedirect("https://stackoverflow.com/search?q=[java] " + e.getMessage());
         }
 
+        request.setAttribute("page_title","Rozwiązania");
         request.setAttribute("solutions", solutions);
         getServletContext().getRequestDispatcher("/WEB-INF/views/solution/list.jsp").forward(request, response);
     }
