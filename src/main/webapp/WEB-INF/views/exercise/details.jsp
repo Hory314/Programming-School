@@ -36,7 +36,7 @@
 <hr>
 <!--<p>This is a great starting point for new custom pages.</p>-->
 <p><strong>Treść zadania:</strong></p>
-<p>${exercise.description}</p>
+<p class="text">${exercise.description}</p>
 <hr>
 <%-- teraz tabelka --%>
 <%
