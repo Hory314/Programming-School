@@ -163,6 +163,7 @@ public class SolutionDao
         params.add(solution.getDescription());
         params.add(solution.getExercise().getId().toString());
         params.add(solution.getUser().getId().toString());
+        params.add(solution.getId().toString());
 
         try
         {

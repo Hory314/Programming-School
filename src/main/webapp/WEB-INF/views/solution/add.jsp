@@ -20,7 +20,7 @@
         <div class="card-header">Dodaj rozwiązanie</div>
 
         <div class="card-body">${form_info}
-            <form action="<c:url value="/add" />" method="post">
+            <form action="<c:url value="/solutions/add" />" method="post">
                 <div class="form-group">
                     <div class="form-label-group">
                         <label for="selectExercise">Zadanie</label>

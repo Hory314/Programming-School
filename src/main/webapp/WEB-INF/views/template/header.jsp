@@ -46,7 +46,7 @@
             </div>
         </li>-->
         <li class="nav-item no-arrow mx-1">
-            <a class="nav-link" href="<c:url value="/add" />" role="button">
+            <a class="nav-link" href="<c:url value="/solutions/add" />" role="button">
                 Dodaj nowe rozwiązanie <i class="fas fa-plus-circle fa-fw"></i>
             </a>
         </li>

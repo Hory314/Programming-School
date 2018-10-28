@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet(name = "SolutionAdd", urlPatterns = {"/add", "/add/"})
+@WebServlet(name = "SolutionAdd", urlPatterns = {"/solutions/add", "/solutions/add/"})
 public class SolutionAdd extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
