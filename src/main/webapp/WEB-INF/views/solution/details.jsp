@@ -87,7 +87,7 @@
 </div>
 <hr style="clear: both;">
 <h5>Rozwiązanie:</h5>
-<p>${solution.description}</p>
+<p class="text">${solution.description}</p>
 <p style="float:right;"><a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}"/>">wszystkie
     rozwiązania tego zadania »</a></p>
 <%

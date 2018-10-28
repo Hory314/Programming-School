@@ -1,3 +1,5 @@
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.util.regex.Pattern" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="./../template/header.jsp"/>
@@ -45,9 +47,11 @@
                             {
                                 str = str.substring(0, 255); // 256 pierwszych znaków
                             }
+
                             request.setAttribute("shortDesc", str);
                         %>
-                        <td>${shortDesc}... <a style="float: right;" href="/solution?id=${solution.id}">przejdź do
+                        <td>${shortDesc}... <a style="float: right;" href="/solution?id=${solution.id}">przejdź
+                            do
                             rozwiązania »</a></td>
                         <td>
                             <a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}" />">${solution.exercise.title}</a>

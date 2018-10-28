@@ -18,3 +18,13 @@ label[for="selectExercise"], label[for="solutionField"] {
     padding-top: 20px;
     height: 400px;
 }
+
+/* Wywswietla entery z DB*/
+.text {
+    white-space: pre-wrap;
+}
+
+/* dla linku nie chcemy tego */
+.text > a {
+    white-space: normal;
+}
