@@ -5,6 +5,15 @@ label[for="selectExercise"], label[for="solutionField"] {
     color: #777 !important;
 }
 
+label
+{
+    cursor: text !important;
+}
+
+.from-disabled {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
 #selectExercise {
     background-color: rgba(0, 0, 0, 0.0);
     position: relative;

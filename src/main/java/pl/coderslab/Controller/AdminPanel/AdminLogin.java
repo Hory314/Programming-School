@@ -33,7 +33,7 @@ public class AdminLogin extends HttpServlet
             if (request.getParameter("remember") == null)
             {
                 System.out.println("jest null - krotka sesja");
-                newSession.setMaxInactiveInterval(5); // 5 sekund do testow
+                newSession.setMaxInactiveInterval(60 * 15); // 15 minut lub do zamkniecia przegladarki // 5 sekund do testow
                 //ustawiam tylko czas "nieaktywnosci" sesji - ciasteczko zyje do zamkniecia przegladarki czyli sesja tez
             }
             else

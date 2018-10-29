@@ -8,7 +8,27 @@
 </ol>
 <h1>${session_user.username}</h1>
 <hr>
-edycja danych usera................ <%-- todo :: edycja danych usera --%>
+<!-- dane usera -->
+<table>
+    <tr>
+        <td><b>Nazwa: </b></td>
+        <td>${session_user.username}</td>
+    </tr>
+    <tr>
+        <td><b>E-mail: </b></td>
+        <td>${session_user.email}</td>
+    </tr>
+    <tr>
+        <td><b>Grupa: </b></td>
+        <td>
+            <a href="<c:url value="/group/${session_user.userGroup.name}?id=${session_user.userGroup.id}"/>">${session_user.userGroup.name}</a>
+        </td>
+    </tr>
+</table>
+<a class="btn btn-primary"
+   href="<c:url value="/settings/edit" />">Edycja danych i zmiana hasła</a>
+${user_edit_info}
+<!-- -->
 <hr>
 <!-- tabelka -->
 <div class="card mb-3">

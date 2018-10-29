@@ -30,8 +30,7 @@
                 <div class="form-group">
                     <div class="form-label-group">
                         <label for="selectExercise">Zadanie</label>
-                        <select style="background-color: rgba(0,0,0,0.15);" id="selectExercise"
-                                class="form-control" disabled>
+                        <select class="form-control from-disabled" id="selectExercise" disabled>
                             <option>${solution.exercise.title}</option>
                         </select> <!-- dummy select -->
                     </div>

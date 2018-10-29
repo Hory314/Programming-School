@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <div class="checkbox">
-                        <label>
+                        <label style="cursor: default !important;">
                             <input type="checkbox" name="remember" checked>
                             Zapamiętaj mnie
                         </label>
@@ -43,7 +43,7 @@
                 <input type="submit" class="btn btn-primary btn-block" value="Login">
             </form>
             <div class="text-center">
-                <span class="d-block small mt-3">Zapomniałeś hasła? Skontaktuj się ze swoim mentorem.</span>
+                <span class="d-block small mt-3">Nie masz konta lub zapomniałeś hasła?<br>Skontaktuj się ze swoim mentorem.</span>
             </div>
         </div>
     </div>

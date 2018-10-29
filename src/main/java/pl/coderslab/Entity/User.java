@@ -73,6 +73,22 @@ public class User
         return (BCrypt.checkpw(this.getPassword(), u.getPassword()) && this.getEmail().equals(u.getEmail()));
     }
 
+    /**
+     * run this method only on user with already set <u>plain</u> password
+     *
+     * @param u user with set <u>hashed</u> password
+     * @return <code>true</code> if passwords match, otherwise return <code>false</code>
+     */
+    // potem moze dodac rzucanie jakiegos wyjatku
+    public boolean checkPw(User u)
+    {
+        if (u == null)
+        {
+            return false;
+        }
+        return BCrypt.checkpw(this.getPassword(), u.getPassword());
+    }
+
     public String getPassword()
     {
         return password;

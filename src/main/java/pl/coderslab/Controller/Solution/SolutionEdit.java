@@ -64,8 +64,8 @@ public class SolutionEdit extends HttpServlet
             solution = null;
         }
 
-        request.setAttribute("solution", solution);
-        session.setAttribute("solution", solution);
+        request.setAttribute("solution", solution); // do widoku edit.jsp
+        session.setAttribute("solution", solution); // do doPost
         getServletContext().getRequestDispatcher("/WEB-INF/views/solution/edit.jsp").forward(request, response);
     }
 }
