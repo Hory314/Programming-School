@@ -28,3 +28,8 @@ label[for="selectExercise"], label[for="solutionField"] {
 .text > a {
     white-space: normal;
 }
+
+.btn-delete {
+    background-color: darkred !important;
+    border-color: darkred !important;
+}
