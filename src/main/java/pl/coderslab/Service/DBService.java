@@ -29,7 +29,7 @@ public class DBService
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/" + database + "?useUnicode=yes&characterEncoding=UTF-8" +
                         "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" +
-                        "&useSSL=false",
+                        "&useSSL=false&allowPublicKeyRetrieval=true",
                 "root",
                 "coderslab");
     }
