@@ -60,8 +60,8 @@ public class AdminLogin extends HttpServlet
                 newSession.setMaxInactiveInterval(sessMaxAge);
             }
 
-            // response.sendRedirect("/adminpanel/manage/groups"); // logowanie ok, wiec przekierowujemy na cos
-            response.sendRedirect(response.encodeRedirectURL("/adminpanel/manage/groups")); // logowanie ok, wiec przekierowujemy na cos
+            // response.sendRedirect(request.getContextPath()+"/adminpanel/manage/groups"); // logowanie ok, wiec przekierowujemy na cos
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/adminpanel/manage/groups")); // logowanie ok, wiec przekierowujemy na cos
         }
         else
         {
@@ -87,7 +87,7 @@ public class AdminLogin extends HttpServlet
                 if (sessionAdminName.equals(this.adminName) && sessionAdminPass.equals(this.adminPass)) // i sie zgadza...
                 { // jak hasla sa w sesji
                     System.err.println("OK zapraszamy");
-                    response.sendRedirect(response.encodeRedirectURL("/adminpanel/manage/groups")); // to user zalogowany juz - przekieruj
+                    response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/adminpanel/manage/groups")); // to user zalogowany juz - przekieruj
                     return; // return zeby sie forward() nie wykonal bo bedzie error
                 }
             }

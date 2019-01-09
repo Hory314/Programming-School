@@ -125,7 +125,7 @@
                             }
                             request.setAttribute("shortDesc", str);
                         %>
-                        <td>${shortDesc}... <a style="float: right;" href="/solution?id=${solution.id}">przejdź do
+                        <td>${shortDesc}... <a style="float: right;" href="<c:url value="/solution?id=${solution.id}"/>">przejdź do
                             rozwiązania »</a></td>
                         <td>
                             <a href="<c:url value="/exercise/${solution.exercise.title}?id=${solution.exercise.id}" />">${solution.exercise.title}</a>

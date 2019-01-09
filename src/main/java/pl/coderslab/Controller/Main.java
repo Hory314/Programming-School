@@ -24,6 +24,6 @@ public class Main extends HttpServlet
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        response.sendRedirect(response.encodeRedirectURL("/login")); // przekierowanie do loginu, a login juz se sprawdzi co trzeba
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/login")); // przekierowanie do loginu, a login juz se sprawdzi co trzeba
     }
 }

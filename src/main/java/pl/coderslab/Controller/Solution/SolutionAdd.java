@@ -29,7 +29,7 @@ public class SolutionAdd extends HttpServlet
             if (user == null) // cos jest nie tak
             {
                 session.invalidate();
-                response.sendRedirect("/login");
+                response.sendRedirect(request.getContextPath()+"/login");
                 return;
             }
             else

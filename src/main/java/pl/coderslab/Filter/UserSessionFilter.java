@@ -64,7 +64,7 @@ public class UserSessionFilter implements Filter
         if (session == null)
         {
             System.err.println("Pusta sesja - redirect do logowania");
-            response.sendRedirect("/login"); // do logowania
+            response.sendRedirect(request.getContextPath()+"/login"); // do logowania
             return;
         }
         else
@@ -79,7 +79,7 @@ public class UserSessionFilter implements Filter
         }
 
         System.err.println("Puste session_user - nikt nie jest zalogowany");
-        response.sendRedirect("/login"); // do logowania
+        response.sendRedirect(request.getContextPath()+"/login"); // do logowania
     }
 
     public void init(FilterConfig config) throws ServletException

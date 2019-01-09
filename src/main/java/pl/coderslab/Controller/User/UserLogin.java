@@ -63,7 +63,7 @@ public class UserLogin extends HttpServlet
 
                 newSession.setAttribute("remember", "true"); // do wykorzystania w filtrze odswiezania sesji
             }
-            response.sendRedirect(response.encodeRedirectURL("/solutions")); // logowanie ok, wiec przekierowujemy na cos
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/solutions")); // logowanie ok, wiec przekierowujemy na cos
         }
         else // nie ok
         {
@@ -87,7 +87,7 @@ public class UserLogin extends HttpServlet
             if (sessionUser != null) // jak cos jest, to ktos zalogowany
             {
                 System.err.println("Ktos ma sesje OK");
-                response.sendRedirect(response.encodeRedirectURL("/solutions"));
+                response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/solutions"));
                 return;
             }
         }

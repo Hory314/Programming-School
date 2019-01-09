@@ -14,7 +14,7 @@
 
 <div class="container">
     <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Zaloguj się</div>
+        <div class="card-header">Zaloguj się (demo@demo.pl / demo)</div>
 
         <div class="card-body">${login_info}
             <form action="<c:url value="/login" />" method="post">
